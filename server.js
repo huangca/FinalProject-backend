@@ -30,6 +30,7 @@ app.use(bodyParser.json())
 app.use(session({
     // Store the session in our DB
     store: new MongoStore({ url: process.env.MONGODB_URI }),
+    //store: new MongoStore({ url: 'mongodb://localhost:27017/ecommerce' }),
     secret: "verysecret",
     resave: false,
     saveUninitialized: false, // Only create a session if a property has been added to the session
@@ -47,6 +48,7 @@ app.use('/api/v1/auth', routes.auth)
 app.use('/api/v1/category',routes.category)
 app.use('/api/v1/product',routes.product)
 app.use('/api/v1/order',routes.order)
+app.use('/api/v1/email',routes.email)
 
 
 app.listen(PORT, () => {
